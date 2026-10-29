@@ -161,30 +161,27 @@ class LineFollowerEnv(GazeboEnv):
         '''
         # Severe penalty for losing the line
         if state == -1 or terminated:
-            return -10
+            return -200
             
         reward = 0
         
         # State 0: Line is on the left
-        if state == 0:
-            if action == 0:  # Correctly turning left
-                reward = 4
-            else:            # Incorrect action
-                reward = -2
+        if action == 0:
+            
+            reward = 1
+            
                 
         # State 1: Line is in the center
-        elif state == 1:
-            if action == 1:  # Correctly moving forward
-                reward = 5
-            else:            # Incorrect action
-                reward = -2
+        elif action == 1:
+            
+            reward = 5
+            
                 
         # State 2: Line is on the right
-        elif state == 2:
-            if action == 2:  # Correctly turning right
-                reward = 4
-            else:            # Incorrect action
-                reward = -2
+        elif action == 2:
+            
+            reward = 1
+            
                 
         return reward
 
